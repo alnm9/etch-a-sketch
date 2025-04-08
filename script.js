@@ -1,8 +1,29 @@
 const container = document.querySelector(".container");
 const btn = document.querySelector("#btn");
 
-btn.addEventListener("click", () => {
+
+// btn.addEventListener("click", () => {
+//     getGrid();
+// })
+
+
+function getGrid() {
+    resetGrid();
+    changeGrid();
+}
+
+
+function resetGrid() {
+    while (container.hasChildNodes()) {
+        container.removeChild(container.firstElementChild);
+    }
+}
+
+function changeGrid() {
     let gridNum = prompt("Enter a number for a new grid");
+    if (gridNum > 100) {
+        gridNum = 100;
+    }
     for (let i = 1; i <= gridNum ** 2; i++) {
         const div = document.createElement("div");
         div.classList.add("pixel");
@@ -10,10 +31,7 @@ btn.addEventListener("click", () => {
         div.style.width = `${100 / gridNum}%`;
         div.style.height = `${100 / gridNum}%`;
     }
-})
-
-
-
+}
 
 
 // div.addEventListener("mouseover", (e) => {

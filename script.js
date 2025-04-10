@@ -10,6 +10,8 @@ const btn = document.querySelector("#btn");
 function getGrid() {
     resetGrid();
     changeGrid();
+
+
 }
 
 
@@ -30,10 +32,27 @@ function changeGrid() {
         container.appendChild(div);
         div.style.width = `${100 / gridNum}%`;
         div.style.height = `${100 / gridNum}%`;
+        div.addEventListener("mouseover", (e) => {
+            e.target.style.background = randomColor();
+        })
+        div.addEventListener("mouseout", (e) => {
+            e.target.style.background = "white";
+
+        })
     }
+
 }
 
+function randomColor() {
+    let color1 = Math.floor(Math.random() * 256);
+    let color2 = Math.floor(Math.random() * 256);
+    let color3 = Math.floor(Math.random() * 256);
+    return `rgb(${color1}, ${color2}, ${color3})`
+}
 
-// div.addEventListener("mouseover", (e) => {
-//     e.target.setAttribute("style", "background-color: rgb(157, 203, 230)");
+// container.forEach((miniDiv) => {
+//     miniDiv.addEventListener("mouseover", (e) => {
+//         e.target.setAttribute("style", "background-color: rgb(157, 203, 230)");
+//     })
 // })
+

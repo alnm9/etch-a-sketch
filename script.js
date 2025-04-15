@@ -10,8 +10,6 @@ const btn = document.querySelector("#btn");
 function getGrid() {
     resetGrid();
     changeGrid();
-
-
 }
 
 
@@ -23,22 +21,27 @@ function resetGrid() {
 
 function changeGrid() {
     let gridNum = prompt("Enter a number for a new grid");
-    if (gridNum > 100) {
-        gridNum = 100;
-    }
-    for (let i = 1; i <= gridNum ** 2; i++) {
-        const div = document.createElement("div");
-        div.classList.add("pixel");
-        container.appendChild(div);
-        div.style.width = `${100 / gridNum}%`;
-        div.style.height = `${100 / gridNum}%`;
-        div.addEventListener("mouseover", (e) => {
-            e.target.style.background = randomColor();
-        })
-        div.addEventListener("mouseout", (e) => {
-            e.target.style.background = "white";
 
-        })
+    if (gridNum > 100 || gridNum < 1) {
+
+        alert("Invalid value")
+        resetGrid;
+
+    } else {
+
+        for (let i = 1; i <= gridNum ** 2; i++) {
+
+            const div = document.createElement("div");
+
+            div.classList.add("pixel");
+            container.appendChild(div);
+            div.style.width = `${100 / gridNum}%`;
+            div.style.height = `${100 / gridNum}%`;
+
+            div.addEventListener("mouseover", (e) => {
+                e.target.style.background = randomColor();
+            })
+        }
     }
 
 }
@@ -49,10 +52,4 @@ function randomColor() {
     let color3 = Math.floor(Math.random() * 256);
     return `rgb(${color1}, ${color2}, ${color3})`
 }
-
-// container.forEach((miniDiv) => {
-//     miniDiv.addEventListener("mouseover", (e) => {
-//         e.target.setAttribute("style", "background-color: rgb(157, 203, 230)");
-//     })
-// })
 
